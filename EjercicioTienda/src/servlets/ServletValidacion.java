@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -48,9 +49,10 @@ public class ServletValidacion extends HttpServlet {
 		ServletContext contexto = request.getServletContext();
 		String user = request.getParameter("user");
 		String pass = request.getParameter("password");
+		PrintWriter out =response.getWriter();
 
 		// creamos el despachador
-		RequestDispatcher despachador = request.getRequestDispatcher("/validacion.jsp");
+		RequestDispatcher despachador;
 
 		boolean userOK = false;
 
@@ -65,12 +67,16 @@ public class ServletValidacion extends HttpServlet {
 
 					despachador.forward(request, response);
 					userOK = true;
-				} else if (!userOK) {
+				} 
+			}
+			if (!userOK) {
 
-					despachador = request.getRequestDispatcher("validacion.jsp");
+				
+				despachador = request.getRequestDispatcher("validacion.jsp");
+				out.println("<html><body></body></html>");
+				out.println("<h3>Error de validacion</h3>");
 
-					despachador.forward(request, response);
-				}
+				despachador.include(request, response);
 			}
 
 
