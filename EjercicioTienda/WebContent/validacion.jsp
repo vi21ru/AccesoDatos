@@ -17,7 +17,7 @@
 		
 		<div id="content">
 			<img src="imagenes/amazon.png">
-		<form action="ServletValidacion.java" method="post">
+		<form action="ServletValidacion" method="post">
 		<input type="text" placeholder="Nombre Usuario"  class="text" name="user"/><br>
 		<input type="text" placeholder="*************"  class="text" name="password"/><br>
 		<input type="checkbox" name="recuerda"/> recuerdame<br>
